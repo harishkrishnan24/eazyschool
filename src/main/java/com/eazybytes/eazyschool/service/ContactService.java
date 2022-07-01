@@ -1,14 +1,12 @@
 package com.eazybytes.eazyschool.service;
 
 import com.eazybytes.eazyschool.model.Contact;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class ContactService {
-
-    private static Logger log = LoggerFactory.getLogger(ContactService.class);
 
     /*
      * Save Contact Details into DB

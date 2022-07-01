@@ -2,8 +2,6 @@ package com.eazybytes.eazyschool.controller;
 
 import com.eazybytes.eazyschool.model.Contact;
 import com.eazybytes.eazyschool.service.ContactService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ContactController {
-    private static Logger log = LoggerFactory.getLogger(ContactController.class);
 
     private final ContactService contactService;
 
