@@ -13,20 +13,21 @@ public class ProjectSecurityConfig {
 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeRequests()
-                .mvcMatchers("/dashboard").authenticated()
-                .mvcMatchers("/home").permitAll()
-                .mvcMatchers("/holidays/**").permitAll()
-                .mvcMatchers("/contact").permitAll()
-                .mvcMatchers("/saveMsg").permitAll()
-                .mvcMatchers("/courses").permitAll()
-                .mvcMatchers("/about").permitAll()
-                .mvcMatchers("/login").permitAll()
-                .and().formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/dashboard")
-                .failureUrl("/login?error=true").permitAll()
+
+        http.csrf().ignoringRequestMatchers("/saveMsg").and()
+                .authorizeHttpRequests()
+                .requestMatchers("/dashboard").authenticated()
+                .requestMatchers("/home").permitAll()
+                .requestMatchers("/holidays/**").permitAll()
+                .requestMatchers("/contact").permitAll()
+                .requestMatchers("/saveMsg").permitAll()
+                .requestMatchers("/courses").permitAll()
+                .requestMatchers("/about").permitAll()
+                .requestMatchers("/login").permitAll()
+                .requestMatchers("/logout").permitAll()
+                .requestMatchers("/assets/**").permitAll()
+                .and().formLogin().loginPage("/login")
+                .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll()
                 .and().logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll()
                 .and().httpBasic();
 
